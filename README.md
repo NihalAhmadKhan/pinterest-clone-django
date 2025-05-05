@@ -1,4 +1,4 @@
-![Screenshot 2022-02-02 at 10-21-38 Pinterest-min](https://user-images.githubusercontent.com/71011395/152303215-f1b256c4-505c-4c4a-8ad6-eb044df43398.png)
+
 
 # Pinterest Clone: Create and Organize Boards with Pins
 
@@ -40,19 +40,3 @@ This project is a Pinterest clone that allows users to create boards and save pi
 8. Start the server: `python manage.py runserver`
 9. You should now be able to access the application by visiting: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
-## How to Contribute
-
-I welcome contributions to enhance and customize this Pinterest clone. If you would like to contribute, please follow these steps:
-
-1. Fork the repository on GitHub.
-2. Create a new branch with a descriptive name for your feature or bug fix.
-3. Make the necessary changes in your branch.
-4. Test your changes thoroughly.
-5. Commit your changes and push them to your forked repository.
-6. Submit a pull request, clearly describing the changes you have made.
-
-## License
-
-This Pinterest clone is released under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as per the terms of the license.
-
-Feel free to explore, contribute, and customize this Pinterest clone according to your needs!
