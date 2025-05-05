@@ -6,6 +6,7 @@ from .models import Pin, Comment
 from boards.models import Board
 from accounts.forms import EditProfileForm
 from accounts.models import User, Follow
+import random as rm
 
 
 @login_required
@@ -74,7 +75,7 @@ def get_related_pins(id):
     ] 
     # get all pins in related boards,
     # The output may be a nested list of queryset objects
-    related_pins_lists = [board.pins.all() for board in related_board]
+    related_pins_lists = [board.pins.order_by("?")[:49] for board in related_board]
     # make ONE list of all pins
     for i in range(len(related_pins_lists)):
         for p in related_pins_lists[i]:
@@ -83,7 +84,11 @@ def get_related_pins(id):
     get_cuurent_pin = [
         related_pins.remove(pin) for pin in related_pins if pin.id == id
     ]
-    return set(related_pins)
+
+    rm.shuffle(related_pins)
+
+
+    return related_pins
 
 
 @login_required
@@ -108,7 +113,7 @@ def pin_detail(request, id):
 @login_required
 def created_pins(request, username):
     user = get_object_or_404(User, username=username)
-    created_pins = user.pin_user.all()
+    created_pins = user.pin_user.all()[:49]
     is_following = request.user.followers.filter(following=user).first()
     context = {
         'created_pins': created_pins,

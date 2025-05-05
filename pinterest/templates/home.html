@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div id="masonry">
+{% comment %} <div id="masonry">
     {% for pin in pins %}
     <a class="m-2" href="{% url 'pins:pin_detail' pin.id %}">
         {% if pin.get_type == 'video' %}
@@ -13,6 +13,39 @@
         {% endif %}
     </a>
     {% endfor %}
+</div> {% endcomment %}
+
+<div class="container mt-4">
+    <div class="row" id="masonry-grid">
+        {% for pin in pins %}
+        <div class="col-md-2 masonry-item mb-3">
+            <a href="{% url 'pins:pin_detail' pin.id %}">
+                {% if pin.get_type == 'video' %}
+                    <video autoplay muted loop class="w-100 rounded" style="height: auto;">
+                        <source src="{{ pin.file.url }}">
+                    </video>
+                {% elif pin.get_type == 'image' %}
+                    <img src="{{ pin.file.url }}" class="img-fluid" style="width: 100%; height: auto; border-radius: 20px;">
+                {% endif %}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
+
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<!-- imagesLoaded.js -->
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+
+<script>
+    // Wait until images load
+    imagesLoaded('#masonry-grid', function () {
+        new Masonry('#masonry-grid', {
+            itemSelector: '.masonry-item',
+            columnWidth: '.masonry-item',
+            percentPosition: true
+        });
+    });
+</script>
 
 {% endblock %}

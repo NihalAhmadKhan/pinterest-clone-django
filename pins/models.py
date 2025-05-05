@@ -13,9 +13,9 @@ class Pin(models.Model):
         Board, on_delete=models.CASCADE, related_name='boards'
     )
     file = models.FileField(upload_to='pins')
-    title = models.CharField(max_length=250)
-    link = models.CharField(max_length=250)
-    description = models.TextField()
+    title = models.CharField(max_length=250, blank=True)
+    link = models.CharField(max_length=250, blank= True)
+    description = models.TextField(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

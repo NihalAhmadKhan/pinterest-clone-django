@@ -157,3 +157,28 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Auto-adjust columns */
+    gap: 10px; /* Space between items */
+    padding: 0;
+
+}
+
+
+.masonry-item {
+		width : calc(100%/7);
+		display: block;
+		break-inside: avoid; /* Prevents grid column breaks mid-item */
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-bottom: 20px;
+	}
+
+.masonry-item img, .masonry-item video {
+    width: 100%;
+    height: auto;
+    border-radius: 20px; /* Keep rounded corners */
+    cursor: zoom-in;
+}
